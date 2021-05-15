@@ -1,0 +1,44 @@
+﻿@model CategoryAddViewModel
+@{
+    ViewData["TItle"] = "Add new category";
+}
+
+<div class="container-fluid">
+
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Add Category Buttn -->
+                    <p><i class="mdi mdi-plus-outline"></i>Add New Category</p>
+                    <!-- End Category Buttn -->
+
+                    @if(Model.StatusMessage != null)
+                    {
+                        <div class="alert alert-success">
+                            @Model.StatusMessage
+                        </div>
+                    }
+
+                    <form method="post" asp-action="add">
+                        <div class="form-group">
+                            <label class="control-label">Category Name</label>
+                            <input asp-for="CategoryName" class="form-control form-white" placeholder="Enter Category " type="text" autofocus />
+                            <span asp-validation-for="CategoryName" class="text-danger"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary ml-1  btn-block  save-category">Add</button>
+                        </div>
+
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

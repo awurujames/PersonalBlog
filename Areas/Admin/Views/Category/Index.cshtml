@@ -1,0 +1,47 @@
+﻿@model CategoryIndexViewModel
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="container-fluid">
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Add Category Buttn -->
+                    <a style="" asp-action="add" class="btn btn-primary mb-3"> <i class="mdi mdi-plus-outline"></i>Add Category</a>
+                    <!-- End Category Buttn -->
+                    <table id="basic-datatable" class="table table-hover dt-responsive nowrap table-centered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                          
+                        @if (Model.Categories.Count() > 0)
+                        {
+                            var counter = 0;
+                            foreach (var category in Model.Categories)
+                            {
+
+                        <tr>
+                            <th scope="row">@(++counter)</th>
+                            <td>@category.CategoryName</td>
+
+                        </tr>
+
+                            }
+                        }
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

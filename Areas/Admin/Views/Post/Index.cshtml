@@ -1,0 +1,82 @@
+﻿@model PostIndexViewModel
+@{
+    ViewData["Title"] = "Posts";
+}
+
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">All Posts</h4>
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <a asp-action="add" class="btn btn-primary mb-3">
+                    Create New Post
+                </a>
+                <button type="button" class="btn btn-light float-right d-none d-sm-block ml-2"> <i class="mdi mdi-format-list-bulleted"></i></button>
+                <button type="button" class="btn btn-light float-right"> <i class="mdi mdi-filter-variant mr-1"></i> Filter</button>
+                <table id="basic-datatable" class="table table-hover dt-responsive nowrap table-centered">
+                    <thead>
+                        <tr>
+                            <th>Author</th>
+                            <th>Post Title</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                       @if (Model.Posts.Count() > 0)
+                       {
+                           foreach (var post in Model.Posts)
+                           {
+
+                        <tr>
+
+                            <td>
+                                <img src="~/uploads/@post.ImageUrl" alt="contact-img" height="36" width="36" title="contact-img" class="rounded-circle float-left mr-2" />
+                                <p class="mb-0 font-weight-bold"><a asp-action="author-profile">@post.ApplicationUser.FirstName @post.ApplicationUser.LastName</a></p>
+                                <span class="font-13 d-none d-sm-block">@post.ApplicationUser.Email</span>
+                            </td>
+
+                            <td>
+                                @post.Title
+                            </td>
+
+                            <td>
+                                @post.Category.CategoryName
+                            </td>
+
+                            <td>
+                                <div class="btn-group dropdown">
+                                    <a href="javascript: void(0);" class="dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" asp-action="edit" asp-route-id="@post.Id"><i class="mdi mdi-pencil mr-1 text-muted"></i>Edit Post</a>
+                                        <a class="dropdown-item" asp-action="delete" asp-route-id="@post.Id"><i class="mdi mdi-delete mr-1 text-muted"></i>Delete</a>
+                                        <a class="dropdown-item" asp-action="view" asp-route-id="@post.Id"><i class="mdi mdi-email mr-1 text-muted"></i>View Post</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                           }
+                       }
+
+                    </tbody>
+                </table>
+
+            </div> <!-- end card-body-->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div>
+<!-- end row -->

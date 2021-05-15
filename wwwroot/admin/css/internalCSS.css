@@ -1,0 +1,87 @@
+﻿#basic-datatable_filter.dataTables_filter label {
+    padding-left: 280px;
+}
+
+ul.pagination.pagination-rounded {
+    padding-left: 350px;
+}
+
+.row .col-md-6 .profilepic {
+    width: 100%;
+    height: 400px;
+    background-image: url('assets/images/users/socialbg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+    .row .col-md-6 .profilepic .smpic {
+        width: 50%;
+        min-height: 100px;
+        margin: 0 auto;
+    }
+
+        .row .col-md-6 .profilepic .smpic img {
+            width: 130px;
+            margin-top: 40px;
+            border-radius: 100%;
+        }
+
+    .row .col-md-6 .profilepic p, .row .col-md-6 .profilepic span {
+        text-align: center;
+        margin: 0;
+        display: block;
+    }
+
+.color {
+    background-color: #2f2725b8;
+    height: 100%;
+}
+
+.row .col-md-6 .profilepic span {
+    padding-bottom: 10px;
+}
+
+.picture {
+    width: 100%;
+    min-height: 100px;
+}
+
+.err {
+    color: red;
+}
+
+.alignimg p {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    min-height: 200px;
+}
+
+.alignimg img {
+    width: 30%;
+    float: left;
+    margin-left: 15px;
+}
+
+.aligntext {
+    width: 100%;
+    height: 100px;
+    margin: 0;
+}
+
+    .aligntext .box {
+        display: inline-block;
+        vertical-align: top;
+        border-right: 1px solid grey;
+        width: 23%;
+        padding-left: 15px;
+    }
+
+        .aligntext .box.except {
+            display: inline-block;
+            vertical-align: top;
+            border: none;
+            width: 23%;
+            padding-left: 15px;
+        }

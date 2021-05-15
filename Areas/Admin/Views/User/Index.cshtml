@@ -1,0 +1,102 @@
+﻿@model UserIndexViewModel
+@{
+    ViewData["Title"] = "Users";
+}
+
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="#">Simulor</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active">Users</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Users</h4>
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <a asp-action="add" class="btn btn-primary mb-3" style="color: #fff;"> <i class="mdi mdi-account-plus mr-1"></i> Add User</a>
+                <button type="button" class="btn btn-light float-right d-none d-sm-block ml-2"> <i class="mdi mdi-format-list-bulleted"></i></button>
+                <button type="button" class="btn btn-light float-right"> <i class="mdi mdi-filter-variant mr-1"></i> Filter</button>
+                <table id="basic-datatable" class="table table-hover dt-responsive nowrap table-centered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Details</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                        @if (Model.ApplicationUsers.Count() > 0)
+                        {
+                            var count = 0;
+                            foreach (var user in Model.ApplicationUsers)
+                            {
+
+                        <tr>
+                            <td><b>@(++count)</b></td>
+                            <td>
+                                <div style="" ; background-size: cover; width:40px; height:40px" class="rounded-circle float-left mr-2"></div>
+                                <p class="mb-0 font-weight-bold"><a href="javascript: void(0);">@user.FirstName @user.LastName</a></p>
+                                <span class="font-13 d-none d-sm-block">@user.Email</span>
+                            </td>
+
+                            <td>
+                                @user.Role
+                            </td>
+
+                            <td>
+                               @user.DateCreated
+                            </td>
+
+                            <td>
+                                <div class="btn-group dropdown">
+                                    <a href="javascript: void(0);" class="dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="mdi mdi-pencil mr-1 text-muted"></i>Upgrade
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+
+                                            <a class="dropdown-item">Admin</a>
+
+                                            <a class="dropdown-item">Editor</a>
+
+
+                                        </div>
+                                        <a class="dropdown-item" asp-action="delete" asp-route-id="@user.Id"><i class="mdi mdi-delete mr-1 text-muted"></i>Delete</a>
+
+                                        <a class="dropdown-item" asp-action="edit" asp-route-id="@user.Id"><i class="mdi mdi-email mr-1 text-muted"></i>Edit</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+
+            </div> <!-- end card-body-->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div>
+<!-- end row -->
